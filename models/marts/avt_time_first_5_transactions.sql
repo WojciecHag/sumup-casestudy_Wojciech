@@ -11,7 +11,9 @@ WITH ranked_transactions AS (
 )
 SELECT
     store_name,
-    ROUND(AVG(time_diff_minutes), 0) AS avg_minutes_first_5_transactions
+    ROUND(AVG(time_diff_minutes), 0) AS avg_minutes_first_5_transactions,
+    ROUND(ROUND(AVG(time_diff_minutes), 0) /60, 0) AS avg_hours_first_5_transactions,
+    ROUND((ROUND(AVG(time_diff_minutes), 0)/60) / 24, 0)  avg_days_first_5_transactions
 FROM ranked_transactions
 WHERE txn_rank <= 5
 AND time_diff_minutes IS NOT NULL  -- Exclude NULL values from first transaction
