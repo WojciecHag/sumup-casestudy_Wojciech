@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-This project demonstrates an end-to-end ELT pipeline using Python, SQL, DBT, and Docker to transform raw data into structured models within a PostgreSQL data warehouse. The project answers key business questions based on transaction data.
+This project demonstrates an end-to-end ELT pipeline using SQL, DBT, and Docker to transform raw data into structured models within a PostgreSQL data warehouse. The project answers key business questions based on transaction data.
 
 ## 2. Assumptions
 
