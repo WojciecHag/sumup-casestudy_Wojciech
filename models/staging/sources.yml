@@ -1,0 +1,10 @@
+version: 2
+
+
+sources:
+  - name: raw_data
+    schema: public # Using public schema as I didnt create schemas in my database for the purpose of this Case Study. Best approach would be to load the data into RAW schema and move it to other schemas while processing.
+    tables:
+      - name: stores
+      - name: transactions
+      - name: devices

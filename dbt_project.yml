@@ -1,0 +1,30 @@
+name: 'elt_pipeline_project'
+version: '1.0.0'
+profile: 'elt_pipeline'
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+
+# Configuring models
+models:
+  elt_pipeline_project:
+    staging:
+      +materialized: table
+      +schema: case_study
+    cleaning:
+      +materialized: table
+      +schema: case_study
+    core:
+      +materialized: table
+      +schema: case_study
+    marts:
+      +materialized: table
+      +schema: case_study

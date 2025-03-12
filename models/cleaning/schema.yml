@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: clean_stores
+    description: "Cleaning model for stores, removing duplicates and NULL values."
+    columns:
+      - name: store_id
+        description: "Unique identifier for stores"
+        tests:
+          - unique
+          - not_null
+      - name: store_name
+        description: "Name of the store"
+        tests:
+          - not_null
+      - name: country
+        description: "Country where the store is located"
+        tests:
+          - not_null
+
+  - name: clean_transactions
+    description: "Cleaning model for transactions, ensuring valid amounts and unique records."
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for transactions"
+        tests:
+          - unique
+          - not_null
+      - name: transaction_amount
+        description: "Transaction amount, should be greater than 0"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0.01
+      - name: transaction_status
+        description: "Status of the transaction"
+        tests:
+          - not_null
+
+  - name: clean_devices
+    description: "Cleaning model for devices, ensuring valid store references."
+    columns:
+      - name: device_id
+        description: "Unique identifier for devices"
+        tests:
+          - unique
+          - not_null
+      - name: device_type_id
+        description: "Type of device used for transactions"
+        tests:
+          - not_null
+      - name: store_id
+        description: "Foreign key reference to stores"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('clean_stores')
+              field: store_id

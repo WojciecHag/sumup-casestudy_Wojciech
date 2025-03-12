@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_stores
+    description: "Staging model for stores data"
+    columns:
+      - name: store_id
+        description: "Unique identifier for stores"
+        tests:
+          - unique
+          - not_null
+      - name: store_name
+        description: "Name of the store"
+        tests:
+          - not_null
+      - name: country
+        description: "Country where the store is located"
+        tests:
+          - not_null
+
+  - name: stg_transactions
+    description: "Staging model for transactions"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for transactions"
+        tests:
+          - unique
+          - not_null
+      - name: transaction_amount
+        description: "Transaction amount"
+        tests:
+          - not_null
+
+  - name: stg_devices
+    description: "Staging model for devices"
+    columns:
+      - name: device_id
+        description: "Unique identifier for devices"
+        tests:
+          - unique
+          - not_null

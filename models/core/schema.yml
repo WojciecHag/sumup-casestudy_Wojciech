@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: core_transactions
+    description: "Core model joining cleaned transactions, stores, and devices for analysis."
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for transactions"
+        tests:
+          - unique
+          - not_null
+      - name: amount
+        description: "Transaction amount in USD"
+        tests:
+          - not_null
+      - name: store_name
+        description: "Name of the store where the transaction happened"
+        tests:
+          - not_null
+      - name: device_type_id
+        description: "Device used to process the transaction"
+        tests:
+          - not_null
+      - name: typology
+        description: "Store category/type"
+        tests:
+          - not_null
+      - name: country
+        description: "Country where the transaction occurred"
+        tests:
+          - not_null
