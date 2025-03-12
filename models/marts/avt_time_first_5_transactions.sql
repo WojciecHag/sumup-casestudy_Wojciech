@@ -16,6 +16,6 @@ SELECT
     ROUND((ROUND(AVG(time_diff_minutes), 0)/60) / 24, 0)  avg_days_first_5_transactions
 FROM ranked_transactions
 WHERE txn_rank <= 5
-AND time_diff_minutes IS NOT NULL  -- Exclude NULL values from first transaction
+AND time_diff_minutes IS NOT NULL
 GROUP BY store_name
 ORDER BY avg_minutes_first_5_transactions desc
